@@ -55,7 +55,7 @@ void addElementAtPosition(std::queue<T> &q, const T &key, size_t position)
         tempQueue.pop();
     }
 
-    auto it = std::find(elements.begin(), elements.end(), key);
+    auto it = std::ranges::find(elements.begin(), elements.end(), key);
     if (it != elements.end() && position <= elements.size())
     {
         elements.insert(elements.begin() + position, *it);
@@ -100,8 +100,8 @@ void subtractDifferenceMaxMin(std::queue<T> &q)
         tempQueue.pop();
     }
 
-    T maxElem = *std::max_element(elements.begin(), elements.end());
-    T minElem = *std::min_element(elements.begin(), elements.end());
+    T maxElem = *std::ranges::max_element(elements.begin(), elements.end());
+    T minElem = *std::ranges::min_element(elements.begin(), elements.end());
     T difference = maxElem - minElem;
 
     for (auto &elem : elements)

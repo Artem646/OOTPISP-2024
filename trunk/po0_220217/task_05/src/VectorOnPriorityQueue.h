@@ -82,7 +82,7 @@ template <class T>
 void VectorOnPriorityQueue<T>::addElementAtPosition(const T &key, int position)
 {
     std::vector<T> vec = toVector();
-    auto it = std::find(vec.begin(), vec.end(), key);
+    auto it = std::ranges::find(vec.begin(), vec.end(), key);
 
     if (it == vec.end())
         return;
@@ -109,8 +109,8 @@ void VectorOnPriorityQueue<T>::subtractDifferenceMaxMin()
         return;
 
     std::vector<T> vec = toVector();
-    T maxElement = *std::max_element(vec.begin(), vec.end());
-    T minElement = *std::min_element(vec.begin(), vec.end());
+    T maxElement = *std::ranges::max_element(vec.begin(), vec.end());
+    T minElement = *std::ranges::min_element(vec.begin(), vec.end());
     T difference = maxElement - minElement;
 
     for (auto &elem : vec)
@@ -133,7 +133,7 @@ std::vector<T> VectorOnPriorityQueue<T>::toVector() const
         tempQueue.pop();
     }
 
-    std::reverse(vec.begin(), vec.end());
+    std::ranges::reverse(vec.begin(), vec.end());
     return vec;
 }
 
