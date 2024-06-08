@@ -55,8 +55,7 @@ void addElementAtPosition(std::queue<T> &q, const T &key, size_t position)
         tempQueue.pop();
     }
 
-    auto it = std::ranges::find(elements.begin(), elements.end(), key);
-    if (it != elements.end() && position <= elements.size())
+    if (auto it = std::ranges::find(elements.begin(), elements.end(), key) != elements.end() && position <= elements.size())
     {
         elements.insert(elements.begin() + position, *it);
     }

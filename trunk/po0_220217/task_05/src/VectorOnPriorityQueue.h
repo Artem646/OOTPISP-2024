@@ -55,9 +55,8 @@ template <class T>
 auto VectorOnPriorityQueue<T>::operator*(const T value) const
 {
     VectorOnPriorityQueue<T> newVector;
-    std::vector<T> vec = toVector();
 
-    for (const auto &elem : vec)
+    for (const auto &elem : toVector())
     {
         newVector.app(elem * value);
     }
